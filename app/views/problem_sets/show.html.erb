@@ -1,0 +1,11 @@
+<h1> <%= @problem_set.name %></h1>
+<p>
+	<%= link_to "Back to problem sets", problem_sets_path %> |
+	<%= link_to "Edit #{@problem_set.name}", edit_problem_set_path(@problem_set) %> |
+    <%= link_to "Delete #{@problem_set.name}", problem_set_path(@problem_set), :method => :delete %>
+</p>
+
+<h3>Description</h3>
+<p> <%= @problem_set.description %></p>
+
+<p><%= link_to "Back to problem sets", problem_sets_path %></p>
