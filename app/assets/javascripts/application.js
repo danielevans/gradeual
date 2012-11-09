@@ -14,4 +14,5 @@
 //= require jquery_ujs
 //= require codemirror
 //= require codemirror/modes/python
+//= require_tree ./vendor/
 //= require_tree .
