@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'capistrano'
+gem 'devise'
 gem 'jquery-rails'
 gem 'mysql2'
 gem 'rails', '3.2.8'
@@ -13,6 +14,7 @@ group :assets do
 end
 
 group :test, :development do
+  gem 'shoulda-matchers'
   gem 'rspec-rails'
   gem 'launchy'
   gem 'factory_girl_rails'
