@@ -11,7 +11,43 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121109155749) do
+ActiveRecord::Schema.define(:version => 20121109210602) do
+
+  create_table "groups", :force => true do |t|
+    t.integer  "teacher_id"
+    t.string   "name"
+    t.string   "description"
+    t.string   "tags"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "groups", ["teacher_id"], :name => "index_groups_on_teacher_id"
+
+  create_table "problem_tests", :force => true do |t|
+    t.integer  "problem_id"
+    t.text     "driver"
+    t.text     "expected_result"
+    t.boolean  "show_result"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+  create_table "problems", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.string   "language"
+    t.string   "tags"
+    t.integer  "teacher_id"
+    t.integer  "default_value"
+    t.text     "template_code"
+    t.text     "reference_code"
+    t.decimal  "max_cpu_seconds",   :precision => 10, :scale => 0
+    t.decimal  "max_total_seconds", :precision => 10, :scale => 0
+    t.decimal  "max_megabytes",     :precision => 10, :scale => 0
+    t.datetime "created_at",                                       :null => false
+    t.datetime "updated_at",                                       :null => false
+  end
 
   create_table "students", :force => true do |t|
     t.string   "email",                  :default => "", :null => false

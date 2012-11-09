@@ -3,4 +3,5 @@ class App < Configurable # :nodoc:
   config.name = Rails.application.class.parent.name
 
   # config.key = "value"
+  config.supported_languages = ["python27"]
 end

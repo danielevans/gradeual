@@ -1,7 +1,15 @@
 Gradeual::Application.routes.draw do
+
+  resources :groups
+
+  resources :problem_tests
+
+  resources :problems
+
   devise_for :students, :controllers => { :omniauth_callbacks => "students/omniauth_callbacks" }
 
   devise_for :teachers
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
