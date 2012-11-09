@@ -11,6 +11,26 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 0) do
+ActiveRecord::Schema.define(:version => 20121109162200) do
+
+  create_table "problem_tests", :force => true do |t|
+    t.integer  "problem_id"
+    t.text     "driver"
+    t.text     "expected_result"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+  create_table "problems", :force => true do |t|
+    t.string   "name"
+    t.integer  "user_id"
+    t.text     "template_code"
+    t.text     "reference_code"
+    t.decimal  "max_cpu_seconds",   :precision => 10, :scale => 0
+    t.decimal  "max_total_seconds", :precision => 10, :scale => 0
+    t.decimal  "max_megabytes",     :precision => 10, :scale => 0
+    t.datetime "created_at",                                       :null => false
+    t.datetime "updated_at",                                       :null => false
+  end
 
 end
