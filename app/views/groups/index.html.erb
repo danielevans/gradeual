@@ -1,0 +1,8 @@
+<h1>Groups</h1>
+<p> <%= link_to "Create new group", new_group_path %></p>
+<% @groups.each do |group| %>
+  <%= link_to group.name, group_path(group) %> |                             
+  <%= link_to "Edit", edit_group_path(group) %> | 
+  <%= link_to "Delete", group_path(group), :method => :delete %>
+<br>
+<% end %>
