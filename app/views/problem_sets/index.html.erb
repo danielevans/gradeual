@@ -1,0 +1,8 @@
+<h1>Problem Set</h1>
+<p> <%= link_to "Create new Problem Set", new_problem_set_path %></p>
+<% @problem_sets.each do |problem_set| %>
+  <%= link_to problem_set.name, problem_set_path(problem_set) %> |                             
+  <%= link_to "Edit", edit_problem_set_path(problem_set) %> | 
+  <%= link_to "Delete", problem_set_path(problem_set), :method => :delete %>
+<br>
+<% end %>

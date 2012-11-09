@@ -1,0 +1,44 @@
+<%= form_for(@problem) do |form| %>
+<p>
+	<%= form.label :name %><br>
+	<%= form.text_field :name %>
+</p>
+<p>
+	<%= form.label :description %><br>
+	<%= form.text_area :description %>
+</p>
+<p>
+	<%= form.label :language %><br>
+	<%= form.text_field :language %>
+</p>
+<p>
+	<%= form.label :tags %><br>
+	<%= form.text_field :tags %>
+</p>
+<p>
+	<%= form.label :default_value %><br>
+	<%= form.text_field :default_value %>
+</p>
+<p>
+	<%= form.label :template_code %><br>
+	<%= form.text_area :template_code %>
+</p>
+<p>
+	<%= form.label :reference_code %><br>
+	<%= form.text_area :reference_code %>
+</p>
+<p>
+	<%= form.label :max_cpu_seconds %><br>
+	<%= form.text_field :max_cpu_seconds %>
+</p>
+<p>
+	<%= form.label :max_total_seconds %><br>
+	<%= form.text_field :max_total_seconds %>
+</p>
+<p>
+	<%= form.label :max_megabytes %><br>
+	<%= form.text_field :max_megabytes %>
+</p>
+<p><%= form.submit %></p>
+<% end %>
+
