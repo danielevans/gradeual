@@ -1,0 +1,19 @@
+<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :class => "form-horizontal" }) do |f| %>
+  <%= devise_error_messages! %>
+  <legend><%= resource_name.to_s.humanize %> Sign Up</legend>
+  <%= render :partial => "shared/bootstrap_input", :locals => { :field => :email, :form => f } %>
+  <%= render :partial => "shared/bootstrap_input", :locals => { :field => :password, :form => f } %>
+  <%= render :partial => "shared/bootstrap_input", :locals => { :field => :password_confirmation, :form => f } %>
+
+  <div class="control-group">
+    <div class="controls">
+      <%= f.submit "Sign up" %>
+    </div>
+    <div class="controls">
+      <br>
+      <%= render "devise/shared/links" %>
+    </div>
+  </div>
+<% end %>
+
+

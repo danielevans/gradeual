@@ -10,4 +10,7 @@
  *
  *= require_self
  *= require ./bootstrap
+ *= require codemirror
+ *= require home
+ *= require editor
  */
