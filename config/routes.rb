@@ -1,5 +1,7 @@
 Gradeual::Application.routes.draw do
 
+  resources :problem_sets
+
   resources :groups
 
   resources :problem_tests
