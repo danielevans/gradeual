@@ -1,5 +1,5 @@
 Gradeual::Application.routes.draw do
-  devise_for :students
+  devise_for :students, :controllers => { :omniauth_callbacks => "students/omniauth_callbacks" }
 
   devise_for :teachers
 
