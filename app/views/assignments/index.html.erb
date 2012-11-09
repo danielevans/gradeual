@@ -1,0 +1,8 @@
+<h1>Assignments</h1>
+<p> <%= link_to "Create new assignment", new_assignment_path %></p>
+<% @assignments.each do |assignment| %>
+  <%= link_to assignment.name, assignment_path(assignment) %> |                             
+  <%= link_to "Edit", edit_assignment_path(assignment) %> | 
+  <%= link_to "Delete", assignment_path(assignment), :method => :delete %>
+<br>
+<% end %>
