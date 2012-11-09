@@ -14,6 +14,7 @@ group :assets do
 end
 
 group :test, :development do
+  gem 'shoulda-matchers'
   gem 'rspec-rails'
   gem 'launchy'
   gem 'factory_girl_rails'
