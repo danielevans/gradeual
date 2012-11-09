@@ -1,20 +1,18 @@
 <h1> <%= @problem.name %> (<%= @problem.default_value %>)</h1>
 <p>
-	<%= link_to "Back to problems", problems_path %> |                       
-	<%= link_to "Edit #{@problem.name}", edit_problem_path(@problem) %> | 
+	<%= link_to "Back to problems", problems_path %> |
+	<%= link_to "Edit #{@problem.name}", edit_problem_path(@problem) %> |
     <%= link_to "Delete #{@problem.name}", problem_path(@problem), :method => :delete %>
 </p>
+
 <h3>Description</h3>
 <p> <%= @problem.description %></p>
-<h3>Reference Code</h3>
-<p><pre>
-	<%= @problem.reference_code %>
-</pre></p>
 
 <h3>Template Code</h3>
-<p><pre>
-	<%= @problem.template_code %>
-</pre></p>
+<textarea id="view_problem_template_code"><%= @problem.template_code %></textarea>
+
+<h3>Reference Code</h3>
+<textarea id="view_problem_reference_code"><%= @problem.reference_code %></textarea>
 
 <p><strong>Language:</strong> <%= @problem.language %> MB</p>
 <p><strong>Max CPU Time:</strong> <%= @problem.max_cpu_seconds %> seconds</p>
