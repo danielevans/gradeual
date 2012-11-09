@@ -7,6 +7,8 @@ gem 'devise'
 gem 'foreman'
 gem 'jquery-rails'
 gem 'mysql2'
+gem 'omniauth'
+gem 'omniauth-google-oauth2'
 gem 'rails', '3.2.8'
 gem 'unicorn'
 
