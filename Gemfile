@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'app'
 gem 'capistrano'
 gem 'codemirror-rails'
 gem 'devise'
