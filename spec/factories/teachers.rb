@@ -2,5 +2,8 @@
 
 FactoryGirl.define do
   factory :teacher do
+    sequence(:email) { |n| "teacher-#{n}@gradeual.dev" }
+    password "simpleton"
+    password_confirmation "simpleton"
   end
 end
