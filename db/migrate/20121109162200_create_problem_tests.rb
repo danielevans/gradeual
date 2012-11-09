@@ -4,6 +4,7 @@ class CreateProblemTests < ActiveRecord::Migration
       t.references :problem
       t.text :driver
       t.text :expected_result
+      t.boolean :show_result
 
       t.timestamps
     end

@@ -1,0 +1,8 @@
+<h1>Problems</h1>
+<p> <%= link_to "Create new problem", new_problem_path %>
+<% @problems.each do |problem| %>
+  <%= link_to problem.name, problem_path(problem) %> |                             
+  <%= link_to "Edit", edit_problem_path(problem) %> | 
+  <%= link_to "Delete", problem_path(problem), :method => :delete %>
+<br>
+<% end %>

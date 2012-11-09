@@ -17,13 +17,18 @@ ActiveRecord::Schema.define(:version => 20121109162200) do
     t.integer  "problem_id"
     t.text     "driver"
     t.text     "expected_result"
+    t.boolean  "show_result"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
   end
 
   create_table "problems", :force => true do |t|
     t.string   "name"
+    t.text     "description"
+    t.string   "language"
+    t.string   "tags"
     t.integer  "user_id"
+    t.integer  "default_value"
     t.text     "template_code"
     t.text     "reference_code"
     t.decimal  "max_cpu_seconds",   :precision => 10, :scale => 0
