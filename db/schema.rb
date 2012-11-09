@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121109162200) do
+ActiveRecord::Schema.define(:version => 20121109192029) do
 
   create_table "problem_tests", :force => true do |t|
     t.integer  "problem_id"
@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(:version => 20121109162200) do
     t.text     "description"
     t.string   "language"
     t.string   "tags"
-    t.integer  "user_id"
+    t.integer  "teacher_id"
     t.integer  "default_value"
     t.text     "template_code"
     t.text     "reference_code"
