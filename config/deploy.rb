@@ -17,7 +17,7 @@ set :rails_env, :production
 
 
 set :scm, "git"
-set :repository, "git@github.com:danielevans/gradeual.git"
+set :repository, "https://github.com/danielevans/gradeual.git"
 set :branch, "dev"
 
 set :deploy_to, "/srv/gradeual"
