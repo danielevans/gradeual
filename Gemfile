@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'capistrano'
+gem 'codemirror-rails'
 gem 'devise'
 gem 'jquery-rails'
 gem 'mysql2'
