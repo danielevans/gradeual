@@ -1,0 +1,8 @@
+<% unless object.errors.empty? %>
+	Please correct the following errors and try again:
+	<ul>
+    <% object.errors.full_messages.each do |message| %>
+		<li><%= message %></li>
+    <% end %>
+	</ul>
+<% end %>
