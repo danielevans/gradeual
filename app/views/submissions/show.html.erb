@@ -1,13 +1,13 @@
 <h1> <%= resource.to_s %> </h1>
 <p>
-	<%= link_to "Back to problems", problems_path %> |
-	<%= link_to "Edit #{resource.to_s}", edit_resource_path(resource) %> |
-  <%= link_to "Delete #{resource.to_s}", resource_path(resource), :method => :delete %>
+  <%= link_to "Edit", edit_resource_path(resource) %> |
+  <%= link_to "Delete", resource_path(resource), :method => :delete %> |
+  <%= link_to "Back", problems_path %>
 </p>
 
 <table class="<%= resource.class.to_s.downcase %> detail">
   <% resource.attributes.each_pair do |attr, value| %>
-    <% next if ['id', 'created_at', 'updated_at'].include?(attr) %>
+    <% next if ['response', 'id', 'created_at', 'updated_at'].include?(attr) %>
     <tr>
       <th><%= attr.titleize %></th>
       <td><%= value %></td>
@@ -18,3 +18,8 @@
     <td><%= resource.code %></td>
   </tr>
 </table>
+
+<h3>Response</h3>
+<pre>
+<%= resource.response %>
+</pre>

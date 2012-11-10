@@ -14,7 +14,7 @@
     </div>
   <% end %>
   <% resource.attributes.each_pair do |field, value| %>
-    <% next if ['id', 'created_at', 'updated_at', 'student_id', 'assignment_id'].include?(field) %>
+    <% next if ['response', 'id', 'created_at', 'updated_at', 'student_id', 'assignment_id'].include?(field) %>
     <%= render :partial => "shared/bootstrap_input", :locals => { :form => f, :field => field } %>
   <% end %>
 
