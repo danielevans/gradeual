@@ -36,21 +36,21 @@ describe GitFileStore do
 
   describe "#store" do
     let(:repo) { GitFileStore.new(student, group) }
-    let(:problem) { create(:problem) }
+    let(:assignment) { create(:assignment) }
     let(:data) { SecureRandom.base64 }
     it "stores a file in the git repo" do
-      repo.store(problem, ".rb", data)
+      repo.store(assignment, ".rb", data)
       Dir.glob(File.join(App.repo_root_path, "**", "*.rb")).should_not be_empty
     end
   end
 
   describe "#retrieve" do
     let(:repo) { GitFileStore.new(student, group) }
-    let(:problem) { create(:problem) }
+    let(:assignment) { create(:assignment) }
     let(:data) { SecureRandom.base64 }
     it "stores a file in the git repo" do
-      repo.store(problem, ".rb", data)
-      repo.retrieve(problem, ".rb").should == data
+      repo.store(assignment, ".rb", data)
+      repo.retrieve(assignment, ".rb").should == data
     end
   end
 

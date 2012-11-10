@@ -1,0 +1,8 @@
+<h1><%= resource_class.to_s.pluralize.humanize %></h1>
+<p> <%= link_to "Create new #{resource_class.to_s.pluralize.humanize}", new_resource_path %></p>
+<% collection.each do |r| %>
+  <%= link_to r.name, resource_path(r) %> |
+  <%= link_to "Edit", edit_resource_path(r) %> |
+  <%= link_to "Delete", delete_resource_path(r), :method => :delete %>
+  <br>
+<% end %>

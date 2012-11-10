@@ -1,0 +1,20 @@
+<h1> <%= resource.to_s %> </h1>
+<p>
+	<%= link_to "Back to problems", problems_path %> |
+	<%= link_to "Edit #{resource.to_s}", edit_resource_path(resource) %> |
+  <%= link_to "Delete #{resource.to_s}", resource_path(resource), :method => :delete %>
+</p>
+
+<table class="<%= resource.class.to_s.downcase %> detail">
+  <% resource.attributes.each_pair do |attr, value| %>
+    <% next if ['id', 'created_at', 'updated_at'].include?(attr) %>
+    <tr>
+      <th><%= attr.titleize %></th>
+      <td><%= value %></td>
+    </tr>
+  <% end %>
+  <tr>
+    <th>Code</th>
+    <td><%= resource.code %></td>
+  </tr>
+</table>
