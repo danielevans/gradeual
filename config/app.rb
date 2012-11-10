@@ -4,6 +4,7 @@ class App < Configurable # :nodoc:
   config.repo_root_path = File.join(Rails.root, 'uploads')
   # config.key = "value"
   config.default_host = "gradeual.com"
+  config.sandbox_server = "gradeual.com:8080"
   config.supported_languages = ["python27"]
   config.language_extensions = {
     "python27" => ".py"

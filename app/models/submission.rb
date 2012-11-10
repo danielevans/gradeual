@@ -35,7 +35,7 @@ class Submission < ActiveRecord::Base
       return
     end
 
-    uri = URI("http://#{App.sandbox_server}/grade/python27/expression")
+    uri = URI("http://gradeual.com:8080/grade/python27/expression")
     #TODO
     #uri = URI("http://#{App.sandbox_server}/grade/python27/inputoutput")
     req = Net::HTTP::Post.new(uri.path)
