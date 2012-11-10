@@ -16,6 +16,8 @@ class HomeController < ApplicationController
   end
   
   def student
+    @student = current_student
+    @groups = current_student.groups
     render :student
   end
 end

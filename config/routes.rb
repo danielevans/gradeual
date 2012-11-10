@@ -1,6 +1,8 @@
 Gradeual::Application.routes.draw do
 
-  resources :assignments
+  resources :assignments do
+    resources :submissions, :only => [:new]
+  end
 
   resources :problem_sets
 

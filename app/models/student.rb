@@ -29,6 +29,11 @@ class Student < ActiveRecord::Base
   # attr_accessible :title, :body
 
   has_many :submissions
+  has_many :student_groups
+  has_many :groups, :through => :student_groups
+  has_many :group_assignments, :through => :groups
+  has_many :submission_assignments, :through => :submissions
+  has_many :problems, :through => :groups
 
   def self.find_for_google_oauth2(access_token, signed_in_resource=nil)
     data = access_token.info
