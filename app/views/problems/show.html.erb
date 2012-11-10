@@ -2,7 +2,9 @@
 <p>
 <%= link_to "Edit", edit_problem_path(@problem) %> |
 <%= link_to "Delete", problem_path(@problem), :method => :delete %> |
-<%= link_to "Back", problems_path %>
+<%= link_to "Back", problems_path %> |
+<%= link_to "Copy", copy_problem_path(@problem) %>
+
 </p>
 <br />
 

@@ -4,10 +4,10 @@
 
 <div class="problems">
   <ul>
-  <% @problems.each do |problem| %>
-    <li>
-    <%= link_to problem.name, problem_path(problem), :class => "" %>
-    </li>
-  <% end %>
+    <% @problems.each do |problem| %>
+      <li>
+        <%= link_to problem.name, problem_path(problem), :class => "" %>
+      </li>
+    <% end %>
   </ul>
 </div>
