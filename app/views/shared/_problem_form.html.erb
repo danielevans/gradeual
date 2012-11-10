@@ -9,24 +9,20 @@
 	<%= form.text_area :description %>
 </p>
 <p>
+<%= form.label :template_code %><br>
+	<%= form.text_area :template_code, :class => "edit" %>
+</p>
+<p>
+	<%= form.label :reference_code %><br>
+	<%= form.text_area :reference_code, :class => "edit" %>
+</p>
+<p>
 	<%= form.label :language %><br>
 	<%= form.text_field :language %>
 </p>
 <p>
 	<%= form.label :tags %><br>
 	<%= form.text_field :tags %>
-</p>
-<p>
-	<%= form.label :default_value %><br>
-	<%= form.text_field :default_value %>
-</p>
-<p>
-	<%= form.label :template_code %><br>
-	<%= form.text_area :template_code %>
-</p>
-<p>
-	<%= form.label :reference_code %><br>
-	<%= form.text_area :reference_code %>
 </p>
 <p>
 	<%= form.label :max_cpu_seconds %><br>
@@ -40,6 +36,23 @@
 	<%= form.label :max_megabytes %><br>
 	<%= form.text_field :max_megabytes %>
 </p>
+<p>
+	<%= form.label :default_value %><br>
+	<%= form.text_field :default_value %>
+</p>
+
+<p>
+  <h2>Problem Tests</h2>
+  <div id="problemtest">
+    <% @problem.problem_tests.each do |test| %>
+      <%= render :partial => "shared/problem_test_form", :locals => {:new => false, :form => form, :test => test, :child_index => nil } %>
+    <% end %>
+  </div>
+  <%= render :partial => "shared/problem_test_form", :locals => {:new => true, :form => form, :test => ProblemTest.new, :child_index => 'replace_this' } %>
+
+  <input type="button" value="+ Add Test" id="add-to-problemtest" />
+</p>
+
 <p><%= form.submit %></p>
 <% end %>
 

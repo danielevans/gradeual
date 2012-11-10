@@ -1,10 +1,12 @@
 source 'https://rubygems.org'
 
 gem 'app'
+gem 'annotate'
 gem 'capistrano'
 gem 'codemirror-rails'
 gem 'devise'
 gem 'foreman'
+gem 'git'
 gem 'jquery-rails'
 gem 'inherited_resources'
 gem 'mysql2'

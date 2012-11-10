@@ -1,0 +1,20 @@
+<% if new %>
+<div id="fields-for-problemtest" class="numerous">
+<% else %>
+<div class="fields-for-problemtest">
+<% end %>
+  <%= form.fields_for :problem_tests, test, :child_index => child_index do |f| %>
+    <div>
+      <%= f.label :driver %>
+      <%= f.text_area :driver, :class => 'edit' %>
+
+      <%= f.label :expected_result %>
+      <%= f.text_area :expected_result %>
+
+      <%= f.label :show_result %>
+      <%= f.check_box :show_result %>
+
+      <%= link_to 'Remove', '#', :class => 'numerous-remove' %>
+    </div>
+  <% end %>
+</div>
