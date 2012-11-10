@@ -1,9 +1,12 @@
+require 'net/http'
+
 class Submission < ActiveRecord::Base
-  attr_accessible :assignment, :assignment_id, :code
+  attr_accessible :assignment, :assignment_id, :code, :response
   attr_accessor :code
   belongs_to :student
   belongs_to :assignment
 
+  before_save :submit_code
   after_save :store_code
 
   def code
@@ -12,6 +15,40 @@ class Submission < ActiveRecord::Base
 
   def code_changed?
     @code != @code_was
+  end
+
+  def submit_code
+    if !@code.present?
+      return
+    end
+
+    uri = URI("http://#{App.sandbox_server}/grade/python27/inputoutput")
+    req = Net::HTTP::Post.new(uri.path)
+    req.body = self.to_json
+    Rails.logger.info req.body
+    req["Content-Type"] = "application/json"
+    req["Accept"] = "application/json"
+
+    http = Net::HTTP.new(uri.host, uri.port)
+    resp = http.start {|htt| htt.request(req)}
+    self.response = resp.body
+  end
+
+  def to_json
+    problem = assignment.problem
+    tests = []
+    problem.problem_tests.each do |t|
+      tests << t.driver
+    end
+
+    {
+       "MaxCPUSeconds" => problem.max_cpu_seconds,
+       "MaxTotalSeconds" => problem.max_total_seconds,
+       "MaxMB" => problem.max_megabytes,
+       "Reference" => problem.reference_code,
+       "Candidate" => code,
+       "Tests" => tests
+    }.to_json
   end
 
   private
