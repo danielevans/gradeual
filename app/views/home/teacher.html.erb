@@ -1,7 +1,6 @@
 <div class="container">
   <h1>Welcome teacher!</h1>
   <p>You can start managing your groups, students and problems here.</p>
-  <h2><%= link_to "Groups", groups_path %></h2>
   <div>
     <% @groups.each do |group| %>
       <div class="well">
@@ -9,7 +8,7 @@
         <h4>Students: <%= group.students.count %></h4>
         <p>
         <% group.students.each_with_index do |student, index| %>
-          <%= student.full_name %><%= "," unless index == group.students.size - 1 %>
+          <%= link_to student.full_name, student_path(student) %><%= "," unless index == group.students.size - 1 %>
         <% end %>
         </p>
         <h4>Problems: <%= group.problems.count %></h4>
