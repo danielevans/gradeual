@@ -15,10 +15,14 @@
 //= require codemirror
 //= require codemirror/modes/python
 //= require twitter/bootstrap
+//= require bootstrap-datepicker
 //= require_tree ./vendor/
 //= require twitter/bootstrap
 //= require_tree .
 
 $(document).ready(function(){
-	$('.dropdown-toggle').dropdown()	
+	$('.dropdown-toggle').dropdown();
+  $(".datepicker").datepicker({
+    format: "yyyy-mm-dd"
+  });
 });

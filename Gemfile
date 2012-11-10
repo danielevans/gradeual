@@ -16,6 +16,7 @@ gem 'rails', '3.2.8'
 gem 'unicorn'
 
 group :assets do
+  gem 'bootstrap-datepicker-rails'
   gem 'less-rails-bootstrap'
   gem 'therubyracer'
   gem 'uglifier', '>= 1.0.3'
