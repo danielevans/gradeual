@@ -6,7 +6,7 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="shadow navbar navbar-inverse navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container">
           <a class="brand" href="#">Codokata</a>
@@ -37,15 +37,23 @@
       </div>
     </div>
 
-    <div id="container" class="container">
-      <% if notice.present? %>
-        <p class="notice"><%= notice %></p>
-      <% end %>
-      <% if alert.present? %>
-        <p class="alert"><%= alert %></p>
-      <% end %>
+    <div id="container" class="<%= controller_name %> container">
+      <div class="container">
+        <% if notice.present? %>
+          <div class="alert alert-success">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            <%= notice %>
+          </div>
+        <% end %>
+        <% if alert.present? %>
+          <div class="alert alert-error">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            <%= alert %>
+          </div>
+        <% end %>
+      </div>
+      <%= yield %>
     </div>
-    <%= yield %>
 
   </body>
 

@@ -1,15 +1,17 @@
-<h1>Welcome <%= @student.first_name %></h1>
-<p>See upcoming assignments, your solutions and more.</p>
-<div>
-	<% @groups.each do |group| %>
-	<div class="well">
-	<h3><%= group.to_s %></h3>
-	<h4>Problems: <%= group.problems.count %></h4>
-	<p>
-		<% group.assignments.sort_by.each_with_index do |assignment, index| %>
-		<%= link_to assignment, new_assignment_submission_path(assignment) %><%= "," unless index == group.assignments.size - 1 %>
-		<% end %>
-	</p>
-	</div>
-	<% end %>
+<div class="container">
+  <h1>Welcome <%= @student.first_name %></h1>
+  <p>See upcoming assignments, your solutions and more.</p>
+  <div>
+    <% @groups.each do |group| %>
+      <div class="well">
+        <h3><%= group.to_s %></h3>
+        <h4>Problems: <%= group.problems.count %></h4>
+        <p>
+        <% group.assignments.sort_by.each_with_index do |assignment, index| %>
+          <%= link_to assignment, new_assignment_submission_path(assignment) %><%= "," unless index == group.assignments.size - 1 %>
+        <% end %>
+        </p>
+      </div>
+    <% end %>
+  </div>
 </div>
