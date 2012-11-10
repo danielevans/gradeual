@@ -22,9 +22,13 @@ Gradeual::Application.routes.draw do
     end
   end
 
+
   devise_for :students, :controllers => { :omniauth_callbacks => "students/omniauth_callbacks" }
 
   devise_for :teachers
+  
+
+  resources :students, :only => [:index, :show]  
 
 
   # The priority is based upon order of creation:
