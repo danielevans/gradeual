@@ -1,11 +1,37 @@
-<h3>Description</h3>
-<div class="well well-small">
-  <p> <%= problem.description %></p>
-</div>
+<div class="row">
+  <div class="well well-small span5">
+    <p class="lead">
+    <strong>Description:</strong>
+    <%= problem.description %>
+    </p>
 
-<h3>Default Points</h3>
-<div class="well well-small">
-  <p> <%= problem.default_value %></p>
+    <p class="lead">
+    <strong>Default Points:</strong>
+    <%= problem.default_value %>
+    </p>
+
+    <p class="lead">
+    <strong>Language:</strong>
+    <%= problem.language %>
+    </p>
+  </div>
+
+  <div class="well well-small pull-right span5">
+    <p class="lead">
+    <strong>Max CPU Time:</strong>
+    <%= problem.max_cpu_seconds %> seconds
+    </p>
+
+    <p class="lead">
+    <strong>Max Total Time:</strong>
+    <%= problem.max_total_seconds %> seconds
+    </p>
+
+    <p class="lead">
+    <strong>Max Memory:</strong>
+    <%= problem.max_megabytes %> MB
+    </p>
+  </div>
 </div>
 
 <h3>Template Code</h3>
@@ -16,26 +42,6 @@
 <h3>Reference Code</h3>
 <div class="well well-small">
   <textarea class="view"><%= problem.reference_code %></textarea>
-</div>
-
-<h3>Language</h3>
-<div class="well well-small">
-  <p><%= problem.language %></p>
-</div>
-
-<h3>Max CPU Time</h3>
-<div class="well well-small">
-  <p><%= problem.max_cpu_seconds %> seconds</p>
-</div>
-
-<h3>Max Total Time</h3>
-<div class="well well-small">
-  <p><%= problem.max_total_seconds %> seconds</p>
-</div>
-
-<h3>Max Memory</h3>
-<div class="well well-small">
-  <p><%= problem.max_megabytes %> MB</p>
 </div>
 
 <br />
