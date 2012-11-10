@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121109235416) do
+ActiveRecord::Schema.define(:version => 20121110020702) do
 
   create_table "assignments", :force => true do |t|
     t.integer  "teacher_id"
@@ -76,6 +76,16 @@ ActiveRecord::Schema.define(:version => 20121109235416) do
     t.datetime "created_at",                                       :null => false
     t.datetime "updated_at",                                       :null => false
   end
+
+  create_table "student_groups", :force => true do |t|
+    t.integer  "student_id"
+    t.integer  "group_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "student_groups", ["group_id"], :name => "index_student_groups_on_group_id"
+  add_index "student_groups", ["student_id"], :name => "index_student_groups_on_student_id"
 
   create_table "students", :force => true do |t|
     t.string   "email",                  :default => "", :null => false

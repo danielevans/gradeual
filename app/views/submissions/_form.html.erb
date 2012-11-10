@@ -2,7 +2,7 @@
 
 <%= form_for(resource,
       :url => resource.new_record? ? collection_url : resource_url(resource),
-      :html => { :method => (resource.new_record? ? "post" : "put") }) do |f| %>
+      :html => { :class => "form-horizontal", :method => (resource.new_record? ? "post" : "put") }) do |f| %>
   <% if resource.errors.any? %>
     <div class="alert">
       <h2><%= pluralize(resource.errors.count, "error") %> prohibited this resource from being saved:</h2>
@@ -28,13 +28,12 @@
   <div class="control-group">
     <%= f.label :code, :class => "control-label" %>
     <div class="controls">
-      <%= f.text_area :code %>
+      <%= f.text_area :code, :class => "edit" %>
     </div>
   </div>
 
-  <div class="control-group">
-    <div class="controls">
-      <%= f.submit %>
-    </div>
+  <div class="form-actions">
+    <button class="btn btn-primary" name="commit" type="submit">Save</button>
+    <%= link_to "Cancel", collection_url, :class => "btn" %>
   </div>
 <% end %>

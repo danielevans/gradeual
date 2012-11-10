@@ -2,6 +2,7 @@
 <p>
 <%= link_to "Edit", edit_group_path(@group) %> |
 <%= link_to "Delete", group_path(@group), :method => :delete %> |
+<%= link_to "New", new_group_path %> |
 <%= link_to "Back", groups_path %>
 </p>
 
@@ -13,6 +14,15 @@
 <h3>Tags</h3>
 <div class="well well-small">
   <p> <%= @group.tags %></p>
+</div>
+
+<h3>Students</h3>
+<div class="well well-small">
+<ul>
+	<% @group.students.each do |student| %>
+	<li><%= student.email %></li>
+	<% end %>
+</ul>
 </div>
 
 <div class="form-actions">
