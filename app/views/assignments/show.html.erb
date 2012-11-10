@@ -19,10 +19,10 @@
 <h3>Reference Code</h3>
 <textarea id="view_problem_reference_code"><%= @assignment.problem.reference_code %></textarea>
 
-<p><strong>Language:</strong> <%= @assignment.problem.language %> MB</p>
+<p><strong>Language:</strong> <%= @assignment.problem.language %></p>
 <p><strong>Max CPU Time:</strong> <%= @assignment.problem.max_cpu_seconds %> seconds</p>
 <p><strong>Max Total Time:</strong> <%= @assignment.problem.max_total_seconds %> seconds</p>
 <p><strong>Max Memory:</strong> <%= @assignment.problem.max_megabytes %> MB</p>
->
 
-<p><%= link_to "Back to assignments", assignments_path %></p>
+
+<p>> <%= link_to "Back to assignments", assignments_path %></p>
