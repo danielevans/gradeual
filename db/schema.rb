@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121110063823) do
+ActiveRecord::Schema.define(:version => 20121110070132) do
 
   create_table "assignments", :force => true do |t|
     t.integer  "teacher_id"
@@ -100,6 +100,8 @@ ActiveRecord::Schema.define(:version => 20121110063823) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
+    t.string   "first_name"
+    t.string   "last_name"
   end
 
   add_index "students", ["email"], :name => "index_students_on_email", :unique => true
@@ -126,6 +128,8 @@ ActiveRecord::Schema.define(:version => 20121110063823) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
+    t.string   "first_name"
+    t.string   "last_name"
   end
 
   add_index "teachers", ["email"], :name => "index_teachers_on_email", :unique => true
