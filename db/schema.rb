@@ -11,7 +11,24 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121109215354) do
+ActiveRecord::Schema.define(:version => 20121109222630) do
+
+  create_table "assignments", :force => true do |t|
+    t.integer  "teacher_id"
+    t.integer  "group_id"
+    t.integer  "problem_set_id"
+    t.integer  "problem_id"
+    t.datetime "start_at"
+    t.datetime "due_at"
+    t.integer  "value"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
+  add_index "assignments", ["group_id"], :name => "index_assignments_on_group_id"
+  add_index "assignments", ["problem_id"], :name => "index_assignments_on_problem_id"
+  add_index "assignments", ["problem_set_id"], :name => "index_assignments_on_problem_set_id"
+  add_index "assignments", ["teacher_id"], :name => "index_assignments_on_teacher_id"
 
   create_table "groups", :force => true do |t|
     t.integer  "teacher_id"
