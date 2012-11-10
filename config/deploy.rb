@@ -9,13 +9,13 @@ set :default_environment, {
 }
 set :repository,  "."
 # set :deploy_via, :copy
-set :deploy_via, :remote_cache
+set :deploy_via, :checkout
 set :copy_strategy, :export
 set :rails_env, :production
 # set :scm, :git # You can set :scm explicitly or Capistrano will make an intelligent guess based on known version control directory names
 # Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
 
-after "deploy:update_code", "deploy:migrations"
+after "deploy:update_code", "deploy:migrate"
 
 set :scm, "git"
 set :repository, "https://github.com/danielevans/gradeual.git"
