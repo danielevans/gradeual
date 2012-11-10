@@ -8,7 +8,11 @@ Gradeual::Application.routes.draw do
 
   resources :problem_tests
 
-  resources :problems
+  resources :problems do
+    member do
+      get :copy
+    end
+  end
 
   resources :submissions
 

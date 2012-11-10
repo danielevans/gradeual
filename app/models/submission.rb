@@ -49,6 +49,7 @@ class Submission < ActiveRecord::Base
        "Candidate" => code,
        "Tests" => tests
     }.to_json
+  end
 
   def to_s
     "#{assignment.to_s} - #{updated_at.to_s :short}"

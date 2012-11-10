@@ -7,6 +7,11 @@ class ProblemsController < ApplicationController
     @problem = Problem.find(params[:id])
   end
 
+  def copy
+    @problem = Problem.find(params[:id]).dup
+    render :new
+  end
+
   def new
     @problem = Problem.new
   end
