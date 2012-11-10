@@ -2,7 +2,8 @@
 <p>
   <%= link_to "Edit", edit_resource_path(resource) %> |
   <%= link_to "Delete", resource_path(resource), :method => :delete %> |
-  <%= link_to "Back", problems_path %>
+  <%= link_to "Back", problems_path %> |
+  <%= link_to "Download Submissions", download_bundle_submission_path(resource) %>
 </p>
 
 <table class="<%= resource.class.to_s.downcase %> detail">
