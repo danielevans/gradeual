@@ -15,4 +15,9 @@
 //= require codemirror
 //= require codemirror/modes/python
 //= require_tree ./vendor/
+//= require twitter/bootstrap
 //= require_tree .
+
+$(document).ready(function(){
+	$('.dropdown-toggle').dropdown()	
+});

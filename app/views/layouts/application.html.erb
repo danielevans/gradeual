@@ -18,6 +18,28 @@
           <div class="nav-collapse collapse">
             <ul class="nav">
               <li class="active"><a href="/">Home</a></li>
+
+			  <li class="dropdown">
+				  <a class="dropdown-toggle" data-toggle="dropdown" href="">Problems</a>
+			      <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+			      	<li class="active"><a href="<%= problems_path %>">Problems</a></li>
+			      	<li class="active"><a href="<%= new_problem_path %>">New Problem</a></li>
+					<br>
+			      	<li class="active"><a href="<%= assignments_path %>">Assignments</a></li>
+			      	<li class="active"><a href="<%= new_assignment_path %>">New assignment</a></li>
+					<br>
+			      	<li class="active"><a href="<%= root_path %>">Submissions</a></li>
+			      	<li class="active"><a href="<%= root_path %>">New submission</a></li>
+			      </ul>
+			  </li>
+			  
+			  <li class="dropdown">
+				  <a class="dropdown-toggle" data-toggle="dropdown" href="<%= groups_path %>">Group</a>
+			      <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+			      	<li class="active"><a href="<%= groups_path %>">Groups</a></li>
+			      	<li class="active"><a href="<%= new_group_path %>">New group</a></li>
+			      </ul>
+			  </li>
             </ul>
           </div><!--/.nav-collapse -->
           <ul class="nav pull-right">
