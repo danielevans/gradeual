@@ -7,17 +7,17 @@ class Submission < ActiveRecord::Base
   after_save :store_code
 
   def code
-    @code ||= get_code_from_store
+    @code ||= retrieve_code
   end
 
   def code_changed?
-    @code != get_code_from_store
+    @code != @code_was
   end
 
   private
-  def get_code_from_store
+  def retrieve_code
     if git_file_store.present?
-      git_file_store.retrieve(assignment, App.language_extensions[assignment.problem.language])
+      @code_was = git_file_store.retrieve(assignment, App.language_extensions[assignment.problem.language])
     else
       nil
     end
@@ -30,8 +30,6 @@ class Submission < ActiveRecord::Base
   end
 
   def store_code
-    puts "*"*80
-    puts self.inspect
     if @code.present? && code_changed? && git_file_store
       git_file_store.store(assignment, App.language_extensions[assignment.problem.language], @code)
     end

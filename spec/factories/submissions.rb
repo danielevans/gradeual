@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :submission do
-    student ""
-    assignment ""
+    student
+    assignment
   end
 end
