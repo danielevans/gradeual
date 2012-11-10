@@ -1,11 +1,28 @@
-<h1> <%= @problem_set.name %></h1>
+<h1> <%= @assignment.problem.name %></h1>
 <p>
-	<%= link_to "Back to problem sets", problem_sets_path %> |
-	<%= link_to "Edit #{@problem_set.name}", edit_problem_set_path(@problem_set) %> |
-    <%= link_to "Delete #{@problem_set.name}", problem_set_path(@problem_set), :method => :delete %>
+	<%= link_to "Back to assignments", assignments_path %> |
+	<%= link_to "Edit #{@assignment.problem.name}", edit_assignment_path(@assignment) %> |
+    <%= link_to "Delete #{@assignment.problem.name}", assignment_path(@assignment), :method => :delete %>
 </p>
 
-<h3>Description</h3>
-<p> <%= @problem_set.description %></p>
+<p><strong>Starts:</strong> <%= @assignment.start_at %></p>
+<p><strong>Due:</strong> <%= @assignment.due_at %></p>
+<p><strong>Value:</strong> <%= @assignment.value %></p>
 
-<p><%= link_to "Back to problem sets", problem_sets_path %></p>
+<h2>Problem details</h2>
+<h3>Description</h3>
+<p> <%= @assignment.problem.description %></p>
+
+<h3>Template Code</h3>
+<textarea id="view_problem_template_code"><%= @assignment.problem.template_code %></textarea>
+
+<h3>Reference Code</h3>
+<textarea id="view_problem_reference_code"><%= @assignment.problem.reference_code %></textarea>
+
+<p><strong>Language:</strong> <%= @assignment.problem.language %> MB</p>
+<p><strong>Max CPU Time:</strong> <%= @assignment.problem.max_cpu_seconds %> seconds</p>
+<p><strong>Max Total Time:</strong> <%= @assignment.problem.max_total_seconds %> seconds</p>
+<p><strong>Max Memory:</strong> <%= @assignment.problem.max_megabytes %> MB</p>
+>
+
+<p><%= link_to "Back to assignments", assignments_path %></p>
