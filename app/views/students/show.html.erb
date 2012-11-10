@@ -1,5 +1,16 @@
-<h1> <%= @student %> </h1>
+<h1> <%= @student.full_name %>'s submissions</h1>
+<p> <%= @student.email %></p>
 <p>
-  <%= link_to "Home", root_url %>
+	<ul>
+	<% @student.submissions.each do |submission| %>
+	<li><%= link_to submission, submission_path(submission) %> |
+		<% if submission.success? %> 
+      <span class="text-success">PASS</span>
+    <% else %>
+      <span class="text-error">FAIL</span>
+    <% end %></li>
+	<% end %>
+</ul>
+  <%= link_to "Student list", students_path %>
 </p>
 

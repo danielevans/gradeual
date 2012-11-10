@@ -1,16 +1,16 @@
 class StudentsController < InheritedResources::Base
   actions :index, :show
-  protected
-
-  def begin_of_association_chain
-    
+  before_filter :authenticate_student_or_teacher!
+  
+  def index
+    redirect_to root_url unless teacher_signed_in?
+    index!
   end
   
   protected
   
-  def index
-    redirect_to student_path(current_student) unless current_teacher
-    index!
+  def resource
+    @student = end_of_association_chain.find(teacher_signed_in? ? params[:id] : current_student.id)
   end
   
   def authenticate_student_or_teacher!

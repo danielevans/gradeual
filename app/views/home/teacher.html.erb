@@ -9,7 +9,7 @@
 	<h4>Students: <%= group.students.count %></h4>
 	<p>
 		<% group.students.each_with_index do |student, index| %>
-		<%= student.full_name %><%= "," unless index == group.students.size - 1 %>
+		<%= link_to student.full_name, student_path(student) %><%= "," unless index == group.students.size - 1 %>
 		<% end %>
 	</p>
 	<h4>Problems: <%= group.problems.count %></h4>
