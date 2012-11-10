@@ -1,8 +1,11 @@
 <h1><%= resource_class.to_s.pluralize.humanize %></h1>
-<p> <%= link_to "Create new #{resource_class.to_s.pluralize.humanize}", new_resource_path %></p>
-<% collection.each do |r| %>
-  <%= link_to r.name, resource_path(r) %> |
-  <%= link_to "Edit", edit_resource_path(r) %> |
-  <%= link_to "Delete", delete_resource_path(r), :method => :delete %>
-  <br>
-<% end %>
+<p> <%= link_to "New", new_resource_path, :class => "btn btn-primary" %></p>
+<br />
+
+<ul>
+  <% collection.each do |r| %>
+    <li>
+    <%= link_to r.name, resource_path(r) %>
+    </li>
+  <% end %>
+</ul>
