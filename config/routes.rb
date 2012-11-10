@@ -16,6 +16,8 @@ Gradeual::Application.routes.draw do
 
   resources :submissions
 
+  resources :students, :only => [:index, :show]  
+
   devise_for :students, :controllers => { :omniauth_callbacks => "students/omniauth_callbacks" }
 
   devise_for :teachers
