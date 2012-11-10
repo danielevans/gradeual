@@ -13,5 +13,7 @@
 
 class Group < ActiveRecord::Base
   belongs_to :teacher
-  attr_accessible :description, :name, :tags
+  has_many :student_groups
+  has_many :students, :through => :student_groups
+  attr_accessible :description, :name, :tags, :student_ids
 end

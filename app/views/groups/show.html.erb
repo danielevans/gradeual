@@ -9,5 +9,10 @@
 <p> <%= @group.description %></p>
 
 <p> <%= @group.tags %></p>
-
+<h3>Students</h3>
+<ul>
+	<% @group.students.each do |student| %>
+	<li><%= student.email %></li>
+	<% end %>
+</ul>
 <p><%= link_to "Back to groups", groups_path %></p>
