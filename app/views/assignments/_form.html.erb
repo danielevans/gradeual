@@ -1,32 +1,49 @@
 <%= render :partial => "shared/generic_errors", :locals => { :object => @assignment } %>
 
-<%= form_for(@assignment) do |form| %>     
-<p>
-	<%= form.label :value %><br>
-	<%= form.text_field :value %> <%= @assignment.problem ? "Default value (#{@assignment.problem.default_value})" : "" %>
-</p>
+<%= form_for(@assignment, :html => { :class => "form-horizontal" }) do |form| %>
+  <fieldset>
+    <div class="control-group">
+      <%= form.label :problem_id, :class => "control-label" %>
+      <div class="controls">
+        <%= form.collection_select :problem_id, Problem.all, :id, :name, :prompt => true %>
+      </div>
+    </div>
 
-<p>
-	<%= form.label :start_at %><br>
-	<%= form.text_field :start_at %>
-</p>
-<p>
-	<%= form.label :due_at %><br>
-	<%= form.text_field :due_at %>
-</p>
-<p>
-	<%= form.label :problem_id %><br>
-	<%= form.collection_select :problem_id, Problem.all, :id, :name, :prompt => true %>
-</p>
-<p>
-	<%= form.label :group_id %><br>
-	<%= form.collection_select :group_id, Group.all, :id, :name, :prompt => true %>
-</p>
-<p>
-	<%= form.label :problem_set_id %><br>
-	<%= form.collection_select :problem_set_id, Group.all, :id, :name, :prompt => true %>
-</p>
+    <div class="control-group">
+      <%= form.label :value, :class => "control-label" %>
+      <div class="controls">
+        <%= form.text_field :value %> <%= @assignment.problem ? "Default value (#{@assignment.problem.default_value})" : " (Leave blank for default)" %>
+      </div>
+    </div>
 
+    <div class="control-group">
+      <%= form.label :start_at, :class => "control-label" %>
+      <div class="controls">
+        <%= form.text_field :start_at %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= form.label :due_at, :class => "control-label" %>
+      <div class="controls">
+        <%= form.text_field :due_at %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= form.label :group_id, :class => "control-label" %>
+      <div class="controls">
+        <%= form.collection_select :group_id, Group.all, :id, :name, :prompt => true %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= form.label :problem_set_id, :class => "control-label" %>
+      <div class="controls">
+        <%= form.collection_select :problem_set_id, Group.all, :id, :name, :prompt => true %>
+      </div>
+    </div>
 
-<p><%= form.submit %></p>
+    <div class="form-actions">
+      <button class="btn btn-primary" name="commit" type="submit">Save</button>
+      <%= link_to "Cancel", assignments_path, :class => "btn" %>
+    </div>
+  </fieldset>
 <% end %>
