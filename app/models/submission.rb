@@ -14,6 +14,10 @@ class Submission < ActiveRecord::Base
     @code != @code_was
   end
 
+  def to_s
+    "#{assignment.to_s} - #{updated_at.to_s :short}"
+  end
+
   private
   def retrieve_code
     if git_file_store.present?

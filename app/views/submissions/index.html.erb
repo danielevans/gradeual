@@ -5,7 +5,7 @@
 <ul>
   <% collection.each do |r| %>
     <li>
-    <%= link_to r.name, resource_path(r) %>
+    <%= link_to r.to_s, resource_path(r) %>
     </li>
   <% end %>
 </ul>
