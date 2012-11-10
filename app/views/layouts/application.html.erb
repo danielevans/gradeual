@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Gradeual</title>
+    <title>Codokata</title>
     <%= stylesheet_link_tag    "application", :media => "all" %>
     <%= csrf_meta_tags %>
   </head>
@@ -9,39 +9,18 @@
     <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container">
-          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <a class="brand" href="#">Gradeual</a>
+          <a class="brand" href="#">Codokata</a>
           <div class="nav-collapse collapse">
             <ul class="nav">
-              <li class="active"><a href="/">Home</a></li>
-
-              <li class="dropdown">
-              <a class="dropdown-toggle" data-toggle="dropdown" href="">Problems</a>
-              <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                <li class="active"><a href="<%= problems_path %>">Problems</a></li>
-                <li class="active"><a href="<%= new_problem_path %>">New Problem</a></li>
-                <br>
-                <li class="active"><a href="<%= assignments_path %>">Assignments</a></li>
-                <li class="active"><a href="<%= new_assignment_path %>">New assignment</a></li>
-                <br>
-                <li class="active"><a href="<%= submissions_path %>">Submissions</a></li>
-                <li class="active"><a href="<%= new_submission_path %>">New submission</a></li>
-              </ul>
-              </li>
-
-              <li class="dropdown">
-              <a class="dropdown-toggle" data-toggle="dropdown" href="<%= groups_path %>">Group</a>
-              <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                <li class="active"><a href="<%= groups_path %>">Groups</a></li>
-                <li class="active"><a href="<%= new_group_path %>">New group</a></li>
-              </ul>
-              </li>
+              <li class=""><a href="/">Home</a></li>
+              <% if teacher_signed_in? %>
+                <li class=""><a href="<%= problems_path %>">Problems</a></li>
+                <li class=""><a href="<%= assignments_path %>">Assignments</a></li>
+                <li class=""><a href="<%= submissions_path %>">Submissions</a></li>
+                <li class=""><a href="<%= groups_path %>">Groups</a></li>
+              <% end %>
             </ul>
-          </div><!--/.nav-collapse -->
+          </div>
           <ul class="nav pull-right">
             <% if student_signed_in? %>
               <li><%= link_to "Sign Out", destroy_student_session_path, :method => :delete %></li>
@@ -65,9 +44,8 @@
       <% if alert.present? %>
         <p class="alert"><%= alert %></p>
       <% end %>
-
-      <%= yield %>
     </div>
+    <%= yield %>
 
   </body>
 
