@@ -20,7 +20,7 @@ class SubmissionsController < InheritedResources::Base
   
   protected
   def resource
-    @submission = end_of_association_chain.first_or_create!(:assignment_id => params[:assignment_id])
+    @submission = end_of_association_chain.where(:student_id=>:current_student_id).first_or_create!(:assignment_id => params[:assignment_id])
   end
 
 end
