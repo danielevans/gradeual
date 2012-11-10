@@ -17,8 +17,26 @@
  *= require editor
  *= require problems
  */
+ 
+div.well {
+	padding-bottom: 0px;
+}
 
 .shadow {
   border-bottom: #000;
   box-shadow: 0px 5px 10px #000;
+}
+
+.problems, .assignments, .problems, .groups, .students {
+	margin: 10px;
+	padding: 10px;
+}
+
+.problems li, .assignments li, .problems li, .groups li, .students li {
+	font-size: 1.2em;
+	margin: 15px;
+}
+
+.view-link {
+	font-weight: bold;
 }

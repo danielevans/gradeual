@@ -6,7 +6,10 @@
   <ul>
     <% @problems.each do |problem| %>
       <li>
-        <%= link_to problem.name, problem_path(problem), :class => "" %>
+        <%= link_to problem.name, problem_path(problem), :class => "view-link" %>&nbsp;&nbsp;|&nbsp;&nbsp;
+		<%= link_to "Edit", edit_problem_path(problem) %>&nbsp;&nbsp;|&nbsp;&nbsp;
+		<%= link_to "Delete", problem_path(problem), :method => :delete %>&nbsp;&nbsp;|&nbsp;&nbsp;
+		<%= link_to "Copy", copy_problem_path(problem) %>
       </li>
     <% end %>
   </ul>
