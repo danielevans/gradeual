@@ -1,3 +1,5 @@
+<%= render :partial => "shared/generic_errors", :locals => { :object => @problem_set } %>
+
 <%= form_for(@problem_set) do |form| %>     
 <p>
 	<%= form.label :name %><br>
