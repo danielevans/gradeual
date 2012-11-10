@@ -12,5 +12,14 @@ describe Submission do
       GitFileStore.any_instance.should_receive(:retrieve)
       submission.code
     end
+
+
+    it "does not commit when the code is re-submitted" do
+      submission.code = "asdfghquier"
+      submission.save!
+      submission.code = "asdfghquier"
+      GitFileStore.any_instance.should_not_receive(:store)
+      submission.save!
+    end
   end
 end

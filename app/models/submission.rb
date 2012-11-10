@@ -11,7 +11,7 @@ class Submission < ActiveRecord::Base
   end
 
   def code_changed?
-    @code != @code_was
+    @code != retrieve_code
   end
 
   def to_s
@@ -21,7 +21,7 @@ class Submission < ActiveRecord::Base
   private
   def retrieve_code
     if git_file_store.present?
-      @code_was = git_file_store.retrieve(assignment, App.language_extensions[assignment.problem.language])
+      git_file_store.retrieve(assignment, App.language_extensions[assignment.problem.language])
     else
       nil
     end
