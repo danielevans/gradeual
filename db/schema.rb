@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121110053659) do
+ActiveRecord::Schema.define(:version => 20121110063823) do
 
   create_table "assignments", :force => true do |t|
     t.integer  "teacher_id"
@@ -70,11 +70,11 @@ ActiveRecord::Schema.define(:version => 20121110053659) do
     t.integer  "default_value"
     t.text     "template_code"
     t.text     "reference_code"
-    t.decimal  "max_cpu_seconds",   :precision => 10, :scale => 0
-    t.decimal  "max_total_seconds", :precision => 10, :scale => 0
-    t.decimal  "max_megabytes",     :precision => 10, :scale => 0
-    t.datetime "created_at",                                       :null => false
-    t.datetime "updated_at",                                       :null => false
+    t.integer  "max_cpu_seconds",   :default => 5
+    t.integer  "max_total_seconds", :default => 5
+    t.integer  "max_megabytes",     :default => 16
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
   end
 
   create_table "student_groups", :force => true do |t|

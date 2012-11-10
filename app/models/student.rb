@@ -39,4 +39,8 @@ class Student < ActiveRecord::Base
     end
     student
   end
+  
+  def to_s
+    email
+  end 
 end
