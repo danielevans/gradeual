@@ -15,5 +15,7 @@ class Group < ActiveRecord::Base
   belongs_to :teacher
   has_many :student_groups
   has_many :students, :through => :student_groups
+  has_many :assignments
+  has_many :problems, :through => :assignments
   attr_accessible :description, :name, :tags, :student_ids
 end
