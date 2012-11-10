@@ -1,23 +1,24 @@
-<h1>Welcome teacher!</h1>
-<p>You can start managing your groups, students and problems here.</p>
-<h2><%= link_to "Groups", groups_path %></h2>
-<div>
-	<% @groups.each do |group| %>
-	<div class="well">
-	<h3><%= group.to_s %></h3>
-	<p><%= link_to "View", groups_path %> | <%= link_to "Edit", edit_group_path(group) %></p>
-	<h4>Students: <%= group.students.count %></h4>
-	<p>
-		<% group.students.each_with_index do |student, index| %>
-		<%= student.full_name %><%= "," unless index == group.students.size - 1 %>
-		<% end %>
-	</p>
-	<h4>Problems: <%= group.problems.count %></h4>
-	<p>
-		<% group.problems.each_with_index do |problem, index| %>
-		<%= link_to problem %><%= "," unless index == group.problems.size - 1 %>
-		<% end %>
-	</p>
-	</div>
-	<% end %>
+<div class="container">
+  <h1>Welcome teacher!</h1>
+  <p>You can start managing your groups, students and problems here.</p>
+  <h2><%= link_to "Groups", groups_path %></h2>
+  <div>
+    <% @groups.each do |group| %>
+      <div class="well">
+        <h3><%= link_to group.to_s, group_path(group) %></h3>
+        <h4>Students: <%= group.students.count %></h4>
+        <p>
+        <% group.students.each_with_index do |student, index| %>
+          <%= student.full_name %><%= "," unless index == group.students.size - 1 %>
+        <% end %>
+        </p>
+        <h4>Problems: <%= group.problems.count %></h4>
+        <p>
+        <% group.problems.each_with_index do |problem, index| %>
+          <%= link_to problem, problem_path(problem) %><%= "," unless index == group.problems.size - 1 %>
+        <% end %>
+        </p>
+      </div>
+    <% end %>
+  </div>
 </div>
