@@ -25,7 +25,6 @@
 
     <div class="control-group">
 		<%= form.label :students, :class => "control-label" %>
-	<div>
 		<% Student.all.each do |student| %>
 		<div class="controls">
 			<%= check_box_tag 'group[student_ids][]', student.id, @group.students.include?(student) %>
@@ -34,6 +33,20 @@
 		<% end %>
 	</div>
 
+    <div class="control-group">
+		<%= form.label :problems, :class => "control-label" %>
+		<% Problem.all.each do |problem| %>
+		<div class="controls">
+			<%= check_box_tag 'group[problem_ids][]', problem.id, @group.problems.include?(problem) %>
+			<%= problem %>
+		</div>
+		<% end %>
+	</div>
+	
+
+	<div class="control-group">
+		<%= link_to "New problem",  new_problem_path, :class=>"control-btn" %>
+	</div>
 
     <div class="form-actions">
       <button class="btn btn-primary" name="commit" type="submit">Save</button>

@@ -17,5 +17,9 @@ class Group < ActiveRecord::Base
   has_many :students, :through => :student_groups
   has_many :assignments
   has_many :problems, :through => :assignments
-  attr_accessible :description, :name, :tags, :student_ids
+  attr_accessible :description, :name, :tags, :student_ids, :problem_ids, :assignment_ids
+  
+  def to_s
+    "#{name}: #{description}"
+  end
 end

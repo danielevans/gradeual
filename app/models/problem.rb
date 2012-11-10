@@ -30,4 +30,7 @@ class Problem < ActiveRecord::Base
   validates :name, :uniqueness => true
   validates :language, :inclusion => { :in => App.supported_languages}
 
+  def to_s
+    name
+  end
 end
