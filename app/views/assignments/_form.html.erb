@@ -2,8 +2,13 @@
 
 <%= form_for(@assignment) do |form| %>     
 <p>
+	<%= form.label :problem_id %><br>
+	<%= form.collection_select :problem_id, Problem.all, :id, :name, :prompt => true %>
+</p>
+
+<p>
 	<%= form.label :value %><br>
-	<%= form.text_field :value %> <%= @assignment.problem ? "Default value (#{@assignment.problem.default_value})" : "" %>
+	<%= form.text_field :value %> <%= @assignment.problem ? "Default value (#{@assignment.problem.default_value})" : "Leave blank for default" %>
 </p>
 
 <p>
@@ -13,10 +18,6 @@
 <p>
 	<%= form.label :due_at %><br>
 	<%= form.text_field :due_at %>
-</p>
-<p>
-	<%= form.label :problem_id %><br>
-	<%= form.collection_select :problem_id, Problem.all, :id, :name, :prompt => true %>
 </p>
 <p>
 	<%= form.label :group_id %><br>
