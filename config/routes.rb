@@ -10,6 +10,8 @@ Gradeual::Application.routes.draw do
 
   resources :problems
 
+  resources :submissions
+
   devise_for :students, :controllers => { :omniauth_callbacks => "students/omniauth_callbacks" }
 
   devise_for :teachers

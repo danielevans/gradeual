@@ -17,29 +17,28 @@ class GitFileStore
     self.class.repo_path(@student, @group)
   end
 
-  def file_relative_path(problem, extension)
-    file_relative_path = File.join("#{problem.id} #{problem.name}".parameterize, "#{problem.name.parameterize}#{extension}")
+  def file_relative_path(assignment, extension)
+    file_relative_path = File.join("#{assignment.id} #{assignment.problem.name}".parameterize, "#{assignment.problem.name.parameterize}#{extension}")
   end
 
-  def file_path(problem, extension)
-    File.join(repo_path, file_relative_path(problem, extension))
+  def file_path(assignment, extension)
+    File.join(repo_path, file_relative_path(assignment, extension))
   end
 
-  def store(problem, extension, data)
-    problem = Problem.find(problem) unless problem.is_a? Problem
-
-    path = file_path(problem, extension)
+  def store(assignment, extension, data)
+    path = file_path(assignment, extension)
     FileUtils.mkdir_p File.dirname(path)
     File.open path, "w" do |file|
       file.write(data)
     end
-    @git.add file_relative_path(problem, extension)
-    @git.commit "Updating solution to #{problem.name}"
+    @git.add file_relative_path(assignment, extension)
+    @git.commit "Updating solution to #{assignment.problem.name}"
   end
 
-  def retrieve(problem, extension)
-    problem = Problem.find(problem) unless problem.is_a? Problem
-    File.open(file_path(problem, extension)).read
+  def retrieve(assignment, extension)
+    File.open(file_path(assignment, extension)).read
+  rescue Errno::ENOENT
+    ''
   end
 
   protected
