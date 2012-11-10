@@ -34,6 +34,8 @@ GEM
     app (1.0.3)
     arel (3.0.2)
     bcrypt-ruby (3.0.1)
+    bootstrap-datepicker-rails (0.6.24)
+      railties (>= 3.0)
     builder (3.0.4)
     capistrano (2.13.5)
       highline
@@ -193,6 +195,7 @@ PLATFORMS
 DEPENDENCIES
   annotate
   app
+  bootstrap-datepicker-rails
   capistrano
   codemirror-rails
   devise

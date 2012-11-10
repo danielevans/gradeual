@@ -3,3 +3,10 @@
 
 en:
   hello: "Hello world"
+  activerecord:
+    errors:
+      models:
+        assignment:
+          attributes:
+            start_at:
+              cant_be_after_due_at: "can't be after due at"

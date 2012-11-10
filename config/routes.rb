@@ -1,6 +1,8 @@
 Gradeual::Application.routes.draw do
 
-  resources :assignments
+  resources :assignments do
+    resources :submissions, :only => [:new]
+  end
 
   resources :problem_sets
 
@@ -14,7 +16,11 @@ Gradeual::Application.routes.draw do
     end
   end
 
-  resources :submissions
+  resources :submissions do
+    member do
+      get :download_bundle
+    end
+  end
 
   resources :students, :only => [:index, :show]  
 
