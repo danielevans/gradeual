@@ -1,18 +1,30 @@
 <h1> <%= @group.name %></h1>
 <p>
-	<%= link_to "Back to groups", groups_path %> |
-	<%= link_to "Edit #{@group.name}", edit_group_path(@group) %> |
-    <%= link_to "Delete #{@group.name}", group_path(@group), :method => :delete %>
+<%= link_to "Edit", edit_group_path(@group) %> |
+<%= link_to "Delete", group_path(@group), :method => :delete %> |
+<%= link_to "New", new_group_path %> |
+<%= link_to "Back", groups_path %>
 </p>
 
 <h3>Description</h3>
-<p> <%= @group.description %></p>
+<div class="well well-small">
+  <p> <%= @group.description %></p>
+</div>
 
-<p> <%= @group.tags %></p>
+<h3>Tags</h3>
+<div class="well well-small">
+  <p> <%= @group.tags %></p>
+</div>
+
 <h3>Students</h3>
+<div class="well well-small">
 <ul>
 	<% @group.students.each do |student| %>
 	<li><%= student.email %></li>
 	<% end %>
 </ul>
-<p><%= link_to "Back to groups", groups_path %></p>
+</div>
+
+<div class="form-actions">
+  <%= link_to "Back", groups_path, :class => "btn" %>
+</div>

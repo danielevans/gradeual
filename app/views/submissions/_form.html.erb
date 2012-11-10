@@ -1,0 +1,40 @@
+
+
+<%= form_for(resource,
+      :url => resource.new_record? ? collection_url : resource_url(resource),
+      :html => { :method => (resource.new_record? ? "post" : "put") }) do |f| %>
+  <% if resource.errors.any? %>
+    <div class="alert">
+      <h2><%= pluralize(resource.errors.count, "error") %> prohibited this resource from being saved:</h2>
+      <ul>
+      <% resource.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <% resource.attributes.each_pair do |field, value| %>
+    <% next if ['id', 'created_at', 'updated_at', 'student_id', 'assignment_id'].include?(field) %>
+    <%= render :partial => "shared/bootstrap_input", :locals => { :form => f, :field => field } %>
+  <% end %>
+
+  <div class="control-group">
+    <%= f.label :assignment_id, :class => "control-label" %>
+    <div class="controls">
+      <%= f.collection_select(:assignment_id, Assignment.all, :id, :to_s) %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :code, :class => "control-label" %>
+    <div class="controls">
+      <%= f.text_area :code %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <div class="controls">
+      <%= f.submit %>
+    </div>
+  </div>
+<% end %>

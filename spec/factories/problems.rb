@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :problem do
-    name "MyString"
+    sequence(:name) { |n| "MyString #{n}" }
     template_code "MyText"
     reference_code "MyText"
     max_cpu_seconds "9.99"

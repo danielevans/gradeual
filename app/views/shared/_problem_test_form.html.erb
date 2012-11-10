@@ -3,18 +3,35 @@
 <% else %>
 <div class="fields-for-problemtest">
 <% end %>
-  <%= form.fields_for :problem_tests, test, :child_index => child_index do |f| %>
-    <div>
-      <%= f.label :driver %>
-      <%= f.text_area :driver, :class => 'edit' %>
 
-      <%= f.label :expected_result %>
-      <%= f.text_area :expected_result %>
-
-      <%= f.label :show_result %>
-      <%= f.check_box :show_result %>
-
-      <%= link_to 'Remove', '#', :class => 'numerous-remove' %>
+<%= form.fields_for :problem_tests, test, :child_index => child_index do |f| %>
+  <div class="well">
+    <div class="control-group">
+      <%= f.label :driver, :class => "control-label" %>
+      <div class="controls">
+        <%= f.text_area :driver, :class => 'edit' %>
+      </div>
     </div>
-  <% end %>
+
+    <div class="control-group">
+      <%= f.label :expected_result, :class => "control-label" %>
+      <div class="controls">
+        <%= f.text_area :expected_result, :rows => 5 %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :show_result, :class => "control-label" %>
+      <div class="controls">
+        <%= f.check_box :show_result %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= f.label :delete, :class => "control-label" %>
+      <div class="controls">
+        <%= link_to 'Delete Test', '#', :class => 'numerous-remove btn btn-danger' %>
+      </div>
+    </div>
+  </div>
+<% end %>
 </div>
