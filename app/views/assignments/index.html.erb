@@ -1,11 +1,15 @@
 <h1>Assignments</h1>
-<%= link_to "New", new_assignment_path, :class => "btn btn-primary" %></p>
+<%= link_to "New", new_assignment_path, :class => "btn btn-primary" %>
 <br />
 
+<div class="assignments">
 <ul>
   <% @assignments.each do |assignment| %>
     <li>
-    <%= link_to assignment.problem.name, assignment_path(assignment) %>
+		<%= link_to "#{assignment.problem.name} for #{assignment.group}", assignment_path(assignment), :class=>"view-link" %> |
+		<%= link_to "Edit", edit_assignment_path(assignment) %> |
+		<%= link_to "Delete", assignment_path(assignment), :method => :delete %>
     </li>
   <% end %>
 </ul>
+</div>
