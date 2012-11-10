@@ -1,57 +1,90 @@
-<%= form_for(@problem) do |form| %>
-<p>
-	<%= form.label :name %><br>
-	<%= form.text_field :name %>
-</p>
-<p>
-	<%= form.label :description %><br>
-	<%= form.text_area :description %>
-</p>
-<p>
-<%= form.label :template_code %><br>
-	<%= form.text_area :template_code, :class => "edit" %>
-</p>
-<p>
-	<%= form.label :reference_code %><br>
-	<%= form.text_area :reference_code, :class => "edit" %>
-</p>
-<p>
-	<%= form.label :language %><br>
-	<%= form.text_field :language %>
-</p>
-<p>
-	<%= form.label :tags %><br>
-	<%= form.text_field :tags %>
-</p>
-<p>
-	<%= form.label :max_cpu_seconds %><br>
-	<%= form.text_field :max_cpu_seconds %>
-</p>
-<p>
-	<%= form.label :max_total_seconds %><br>
-	<%= form.text_field :max_total_seconds %>
-</p>
-<p>
-	<%= form.label :max_megabytes %><br>
-	<%= form.text_field :max_megabytes %>
-</p>
-<p>
-	<%= form.label :default_value %><br>
-	<%= form.text_field :default_value %>
-</p>
+<%= form_for(@problem, :html => { :class => "form-horizontal" }) do |form| %>
+  <fieldset>
+    <div class="control-group">
+      <%= form.label :name, :class => "control-label" %>
+      <div class="controls">
+        <%= form.text_field :name %>
+      </div>
+    </div>
 
-<p>
-  <h2>Problem Tests</h2>
-  <div id="problemtest">
-    <% @problem.problem_tests.each do |test| %>
-      <%= render :partial => "shared/problem_test_form", :locals => {:new => false, :form => form, :test => test, :child_index => nil } %>
-    <% end %>
-  </div>
-  <%= render :partial => "shared/problem_test_form", :locals => {:new => true, :form => form, :test => ProblemTest.new, :child_index => 'replace_this' } %>
+    <div class="control-group">
+      <%= form.label :description, :class => "control-label" %>
+      <div class="controls">
+        <%= form.text_area :description, :rows => 5 %>
+      </div>
+    </div>
 
-  <input type="button" value="+ Add Test" id="add-to-problemtest" />
-</p>
+    <div class="control-group">
+      <%= form.label :template_code, :class => "control-label" %>
+      <div class="controls">
+        <%= form.text_area :template_code, :class => "edit" %>
+      </div>
+    </div>
 
-<p><%= form.submit %></p>
+    <div class="control-group">
+      <%= form.label :reference_code, :class => "control-label" %>
+      <div class="controls">
+        <%= form.text_area :reference_code, :class => "edit" %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= form.label :language, :class => "control-label" %>
+      <div class="controls">
+        <%= form.text_field :language %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= form.label :tags, :class => "control-label" %>
+      <div class="controls">
+        <%= form.text_field :tags %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= form.label :max_cpu_seconds, :class => "control-label" %>
+      <div class="controls">
+        <%= form.text_field :max_cpu_seconds %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= form.label :max_total_seconds, :class => "control-label" %>
+      <div class="controls">
+        <%= form.text_field :max_total_seconds %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= form.label :max_megabytes, :class => "control-label" %>
+      <div class="controls">
+        <%= form.text_field :max_megabytes %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= form.label :default_value, :class => "control-label" %>
+      <div class="controls">
+        <%= form.text_field :default_value %>
+      </div>
+    </div>
+
+    <h2>Testing</h2>
+    <div id="problemtest">
+      <% @problem.problem_tests.each do |test| %>
+        <%= render :partial => "shared/problem_test_form", :locals => {:new => false, :form => form, :test => test, :child_index => nil } %>
+      <% end %>
+    </div>
+    <%= render :partial => "shared/problem_test_form", :locals => {:new => true, :form => form, :test => ProblemTest.new, :child_index => 'replace_this' } %>
+
+    <input type="button" value="+ Add Test" id="add-to-problemtest" />
+
+    <div class="form-actions">
+      <button class="btn btn-primary" name="commit" type="submit">Save</button>
+      <%= link_to "Cancel", problems_path, :class => "btn" %>
+    </div>
+
+  </fieldset>
 <% end %>
 

@@ -1,31 +1,82 @@
-<h1> <%= @problem.name %> (<%= @problem.default_value %>)</h1>
+<h1> <%= @problem.name %> </h1>
 <p>
-	<%= link_to "Back to problems", problems_path %> |
-	<%= link_to "Edit #{@problem.name}", edit_problem_path(@problem) %> |
-    <%= link_to "Delete #{@problem.name}", problem_path(@problem), :method => :delete %>
+<%= link_to "Edit", edit_problem_path(@problem) %> |
+<%= link_to "Delete", problem_path(@problem), :method => :delete %> |
+<%= link_to "Back", problems_path %>
 </p>
+<br />
 
 <h3>Description</h3>
-<p> <%= @problem.description %></p>
+<div class="well well-small">
+  <p> <%= @problem.description %></p>
+</div>
+
+<h3>Default Points</h3>
+<div class="well well-small">
+  <p> <%= @problem.default_value %></p>
+</div>
 
 <h3>Template Code</h3>
-<textarea class="view"><%= @problem.template_code %></textarea>
+<div class="well well-small">
+  <textarea class="view"><%= @problem.template_code %></textarea>
+</div>
 
 <h3>Reference Code</h3>
-<textarea class="view"><%= @problem.reference_code %></textarea>
+<div class="well well-small">
+  <textarea class="view"><%= @problem.reference_code %></textarea>
+</div>
 
-<p><strong>Language:</strong> <%= @problem.language %> MB</p>
-<p><strong>Max CPU Time:</strong> <%= @problem.max_cpu_seconds %> seconds</p>
-<p><strong>Max Total Time:</strong> <%= @problem.max_total_seconds %> seconds</p>
-<p><strong>Max Memory:</strong> <%= @problem.max_megabytes %> MB</p>
+<h3>Language</h3>
+<div class="well well-small">
+  <p><%= @problem.language %></p>
+</div>
 
-<h3>Tests</h3>
-<% @problem.problem_tests.each do |test| %>
-  <div class="problem_test">
-    <textarea class="view"><%= test.driver %></textarea>
-    <textarea disabled="disabled"><%= test.expected_result %></textarea>
-    <p><%= test.show_result %></p>
-  </div>
-<% end %>
+<h3>Max CPU Time</h3>
+<div class="well well-small">
+  <p><%= @problem.max_cpu_seconds %> seconds</p>
+</div>
 
-<p><%= link_to "Back to problems", problems_path %></p>
+<h3>Max Total Time</h3>
+<div class="well well-small">
+  <p><%= @problem.max_total_seconds %> seconds</p>
+</div>
+
+<h3>Max Memory</h3>
+<div class="well well-small">
+  <p><%= @problem.max_megabytes %> MB</p>
+</div>
+
+<br />
+<h2>Tests</h2>
+<div class="accordion" id="accordion">
+  <% @problem.problem_tests.each_with_index do |test, index| %>
+    <div class="problem_test accordion-group">
+      <div class="accordion-heading">
+        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse<%= index+1 %>">
+          <h4>Test <%= index+1 %></h4>
+        </a>
+      </div>
+
+      <div id="collapse<%= index+1 %>" class="accordion-body collapse">
+        <div class="accordion-inner">
+          <h3>Driver</h3>
+          <div class="well well-small">
+            <textarea class="view"><%= test.driver %></textarea>
+          </div>
+          <h3>Expected Result</h3>
+          <div class="well well-small">
+            <p><%= test.expected_result %></p>
+          </div>
+          <h3>Show Result?</h3>
+          <div class="well well-small">
+            <p><%= test.show_result %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<div class="form-actions">
+  <%= link_to "Back", problems_path, :class => "btn" %>
+</div>

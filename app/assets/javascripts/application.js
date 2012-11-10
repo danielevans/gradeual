@@ -14,5 +14,6 @@
 //= require jquery_ujs
 //= require codemirror
 //= require codemirror/modes/python
+//= require twitter/bootstrap
 //= require_tree ./vendor/
 //= require_tree .
