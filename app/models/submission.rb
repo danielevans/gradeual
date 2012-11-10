@@ -9,6 +9,19 @@ class Submission < ActiveRecord::Base
   before_save :submit_code
   after_save :store_code
 
+  def success?
+    JSON.parse(response).each do |status|
+      if status['Success'] == false
+        return false
+      end
+    end
+    true
+  end
+
+  def parse_json
+    JSON.parse(response)
+  end
+
   def code
     @code ||= retrieve_code
   end
@@ -22,7 +35,9 @@ class Submission < ActiveRecord::Base
       return
     end
 
-    uri = URI("http://#{App.sandbox_server}/grade/python27/inputoutput")
+    uri = URI("http://#{App.sandbox_server}/grade/python27/expression")
+    #TODO
+    #uri = URI("http://#{App.sandbox_server}/grade/python27/inputoutput")
     req = Net::HTTP::Post.new(uri.path)
     req.body = self.to_json
     Rails.logger.info req.body
