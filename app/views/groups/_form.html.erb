@@ -28,7 +28,7 @@
 		<% Student.all.each do |student| %>
 		<div class="controls">
 			<%= check_box_tag 'group[student_ids][]', student.id, @group.students.include?(student) %>
-			<%= student.email %>
+			<%= student %>
 		</div>
 		<% end %>
 	</div>

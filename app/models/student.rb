@@ -40,7 +40,11 @@ class Student < ActiveRecord::Base
     student
   end
   
+  def full_name
+    "#{first_name} #{last_name}"
+  end
+  
   def to_s
-    email
-  end 
+    "#{full_name}: #{email}"
+  end
 end
