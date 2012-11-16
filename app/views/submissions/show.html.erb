@@ -32,7 +32,7 @@
 
   <div class="well well-small span6 pull-right">
     <h3>Results</h3>
-    <% if resource.results.nil? %>
+    <% if resource.response.nil? %>
       EMPTY
     <% else %>
       <% resource.parse_json.each_with_index do |test, index| %>
