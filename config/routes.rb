@@ -1,7 +1,7 @@
 Gradeual::Application.routes.draw do
 
   resources :assignments do
-    resources :submissions, :only => [:new]
+    resources :submissions, :only => [:new, :create]
   end
 
   resources :problem_sets
@@ -26,9 +26,9 @@ Gradeual::Application.routes.draw do
   devise_for :students, :controllers => { :omniauth_callbacks => "students/omniauth_callbacks" }
 
   devise_for :teachers
-  
 
-  resources :students, :only => [:index, :show]  
+
+  resources :students, :only => [:index, :show]
 
 
   # The priority is based upon order of creation:
