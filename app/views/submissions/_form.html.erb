@@ -1,5 +1,5 @@
 <%= form_for(resource,
-      :url => resource.new_record? ? assignment_submissions_url(:assignment_id => resource.assignment_id) : resource_url(resource),
+      :url => resource.new_record? ? assignment_submissions_url(:assignment_id => params[:assignment_id]) : resource_url(resource),
       :html => { :class => "form-horizontal", :method => (resource.new_record? ? "post" : "put") }) do |f| %>
 
   <% resource.attributes.each_pair do |field, value| %>
@@ -9,6 +9,17 @@
 
   <div class="well">
     <p><%= simple_format resource.assignment.problem.description %></p>
+  </div>
+
+  <div class="well well-small">
+    <p class="lead">
+      <strong>Status:</strong>
+      <% if resource.success? %>
+        <span class="text-success">PASS</span>
+      <% else %>
+        <span class="text-error">FAIL</span>
+      <% end %>
+    </p>
   </div>
 
   <div class="control-group">
@@ -21,5 +32,24 @@
   <div class="form-actions">
     <button class="btn btn-primary" name="commit" type="submit">Save</button>
     <%= link_to "Cancel", collection_url, :class => "btn" %>
+  </div>
+
+  <div class="well well-small">
+    <h3>Results</h3>
+    <% if resource.response.nil? %>
+      EMPTY
+    <% else %>
+      <% resource.parse_json.each_with_index do |test, index| %>
+        <pre>
+          <% if test['Candidate']['Stderr'] != "" %>
+            Error: <%= test['Candidate']['Stderr'] %>
+          <% end #TODO %>
+          Output: <%= test['Candidate']['Stdout'].split("\n").first %>
+          <% if resource.assignment.problem.problem_tests[index].show_result %>
+            Expected Output: <%= resource.assignment.problem.problem_tests[index].expected_result %>
+          <% end %>
+        </pre>
+      <% end %>
+    <% end %>
   </div>
 <% end %>
