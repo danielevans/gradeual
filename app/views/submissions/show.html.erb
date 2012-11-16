@@ -32,16 +32,20 @@
 
   <div class="well well-small span6 pull-right">
     <h3>Results</h3>
-    <% resource.parse_json.each_with_index do |test, index| %>
-      <pre>
-        <% if test['Candidate']['Stderr'] != "" %>
-        Error: <%= test['Candidate']['Stderr'] %>
-        <% end #TODO %>
-        Output: <%= test['Candidate']['Stdout'].split("\n").first %>
-        <% if resource.assignment.problem.problem_tests[index].show_result %>
-        Expected Output: <%= resource.assignment.problem.problem_tests[index].expected_result %>
-        <% end %>
-      </pre>
+    <% if resource.result.nil? %>
+      EMPTY
+    <% else %>
+      <% resource.parse_json.each_with_index do |test, index| %>
+        <pre>
+          <% if test['Candidate']['Stderr'] != "" %>
+            Error: <%= test['Candidate']['Stderr'] %>
+          <% end #TODO %>
+          Output: <%= test['Candidate']['Stdout'].split("\n").first %>
+          <% if resource.assignment.problem.problem_tests[index].show_result %>
+            Expected Output: <%= resource.assignment.problem.problem_tests[index].expected_result %>
+          <% end %>
+        </pre>
+      <% end %>
     <% end %>
   </div>
 </div>
