@@ -10,6 +10,7 @@ class Submission < ActiveRecord::Base
   after_save :store_code
 
   def success?
+    return true if responde.nil?
     JSON.parse(response).each do |status|
       if status['Success'] == false
         return false
